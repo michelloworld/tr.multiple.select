@@ -1,5 +1,5 @@
 /*
-* Select Multiple Table
+* Table Row Multiple Select
 * Copyright (c) 2015 Mic (Bangkok, Thailand)
 *
 * This program is free software. It comes without any warranty, to
@@ -9,12 +9,12 @@
 */
 ;(function($, window, document) {
 
-	SelectMultipleTable = function(el, opts) {
+	TrMultipleSelect = function(el, opts) {
 		this.el = el;
 		this.opts = opts;
 	};
 
-	SelectMultipleTable.prototype = {
+	TrMultipleSelect.prototype = {
 		options: {
 			symbol: '✔',
 			symbolCode: '&#10004;',
@@ -70,9 +70,9 @@
 		}
 	}
 	
-	$.fn.selectMultipleTable = function(options) {
+	$.fn.trMultipleSelect = function(options) {
 		return this.each(function() {
-			new SelectMultipleTable(this, options).init();
+			new TrMultipleSelect(this, options).init();
 		});
 	};
 
