@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Table Row Multiple Select</title>
+	<script type="text/javascript" src="../public/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../src/tr.multiple.select.js"></script>
+	<link rel="stylesheet" type="text/css" href="../public/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="../src/tr-multiple-select.css" />
+</head>
+<body>
+
+<div class="container">
+	<h3 class="page-header">Table Row Multiple Select</h3>
+
+	<table class="table table-hover select-multiple-table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th></th>
+			</tr>	
+		</thead>
+		<tbody>
+			<tr>
+				<td data-smt-value="1">1</td>
+				<td>John</td>
+				<td>Doe</td>
+				<td data-smt-selected></td>
+			</tr>
+			<tr>
+				<td data-smt-value="2">2</td>
+				<td>Jane</td>
+				<td>Doe</td>
+				<td data-smt-selected></td>
+			</tr>
+			<tr>
+				<td data-smt-value="3">3</td>
+				<td>Jim</td>
+				<td>Doe</td>
+				<td data-smt-selected></td>
+			</tr>
+			<tr>
+				<td data-smt-value="4">4</td>
+				<td>Jan</td>
+				<td>Doe</td>
+				<td data-smt-selected></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+$(function() {
+	$('.select-multiple-table').selectMultipleTable({
+		nameAttr: 'name'
+	});
+});
+</script>
+
+</body>
+</html>
