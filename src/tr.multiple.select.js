@@ -18,7 +18,7 @@
 		options: {
 			symbol: '✔',
 			symbolCode: '&#10004;',
-			selectId: 'smt-',
+			selectId: 'tms-',
 		},
 
 		init: function() {
@@ -33,16 +33,16 @@
 		activeMouse: function() {
 			var that = this;
 			$(this.el).find('tbody tr').on('click', function(e) {
-				var smtSelected = $(this).find('[data-smt-selected]');
-				var optionValue = $(this).find('td').data('smt-value');
-				if(smtSelected.hasClass('stm-show')) {
-					smtSelected.removeClass('stm-show');
-					smtSelected.html('');	
+				var tmsSelected = $(this).find('[data-tms-selected]');
+				var optionValue = $(this).find('td').data('tms-value');
+				if(tmsSelected.hasClass('tms-show')) {
+					tmsSelected.removeClass('tms-show');
+					tmsSelected.html('');	
 					that.deselect(optionValue);
 				}
 				else {
-					smtSelected.addClass('stm-show');
-					smtSelected.html(that.opts.symbolCode);
+					tmsSelected.addClass('tms-show');
+					tmsSelected.html(that.opts.symbolCode);
 					that.select(optionValue);
 				}
 			});
@@ -61,7 +61,7 @@
 			var optionTags = '';
 
 			$(this.el).find('tbody tr').each(function(i, v) {
-				var optionValue = $(v).find('td').data('smt-value');
+				var optionValue = $(v).find('td').data('tms-value');
 				optionTags += '<option value="'+optionValue+'">'+optionValue+'</option>';
 			});
 
