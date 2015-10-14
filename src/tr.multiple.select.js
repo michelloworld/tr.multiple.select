@@ -27,7 +27,8 @@
 			this.opts.selectId = this.opts.selectId+Math.ceil(Math.random()*1000000);
 			
 			this.activeMouse();
-			this.buildSelectOption();			
+			this.buildSelectOption();
+			this.setLimit();
 		},
 
 		activeMouse: function() {
@@ -37,12 +38,12 @@
 				var optionValue = $(this).find('td').data('tms-value');
 				if(tmsSelected.hasClass('tms-show')) {
 					tmsSelected.removeClass('tms-show');
-					tmsSelected.html('');	
+					tmsSelected.css({ color: '#ddd' }).html(that.opts.symbolCode);
 					that.deselect(optionValue);
 				}
 				else {
 					tmsSelected.addClass('tms-show');
-					tmsSelected.html(that.opts.symbolCode);
+					tmsSelected.css({ color: 'inherit' }).html(that.opts.symbolCode);
 					that.select(optionValue);
 				}
 			});
@@ -57,16 +58,25 @@
 		},
 
 		buildSelectOption: function() {
+			var that = this;
 			var selectTag = $('<select/>', { 'name': this.opts.nameAttr, 'style': 'display: none;', 'id': this.opts.selectId, 'multiple': 'multiple' });
 			var optionTags = '';
 
 			$(this.el).find('tbody tr').each(function(i, v) {
+				$(v).find('[data-tms-selected]').css({ color: '#ddd' }).html(that.opts.symbolCode);
 				var optionValue = $(v).find('td').data('tms-value');
 				optionTags += '<option value="'+optionValue+'">'+optionValue+'</option>';
 			});
 
 			$(selectTag).append(optionTags);
 			$(this.el).after(selectTag);
+		},
+
+		setLimit: function() {
+			var limit = this.opts.limit;
+			var rowHeight = $(this.el).find('tbody tr').outerHeight();
+			var overflowHeight = rowHeight * 5;
+			$(this.el).find('tbody').css({ 'height': overflowHeight, 'display': 'inline-block', 'overflow-y': 'auto', 'width': '100%', 'clear': 'both' });
 		}
 	}
 	
